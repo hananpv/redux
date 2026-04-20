@@ -1,0 +1,17 @@
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+
+function reducer(state = 0, action) {
+
+  switch (action.type) {
+    case "INC":
+      return state + 1;
+
+    case "DEC":
+      return state - 1;
+
+    default:
+      return state;
+  }
+}
