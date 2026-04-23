@@ -5,26 +5,29 @@ const initialState = {
 };
 
 function reducer(state = initialState, action) {
-  switch (action.type) {
-    case "FETCH_REQUEST":
-      return { ...state, loading: true };
 
-    case "FETCH_SUCCESS":
-      return {
-        loading: false,
-        users: action.payload,
-        error: "",
-      };
-
-    case "FETCH_FAILURE":
-      return {
-        loading: false,
-        users: [],
-        error: action.payload,
-      };
-
-    default:
-      return state;
+  if (action.type === "FETCH_REQUEST") {
+    return { ...state, loading: true };
+  } 
+  
+  else if (action.type === "FETCH_SUCCESS") {
+    return {
+      loading: false,
+      users: action.payload,
+      error: "",
+    };
+  } 
+  
+  else if (action.type === "FETCH_FAILURE") {
+    return {
+      loading: false,
+      users: [],
+      error: action.payload,
+    };
+  } 
+  
+  else {
+    return state;
   }
 }
 
